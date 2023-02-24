@@ -8,10 +8,11 @@ public class Player : MonoBehaviour
     [SerializeField]   
     private float _vitesse = 10;
 
+
     // Start is called before the first frame update
     private void Start()
     {
-        this.transform.position = new Vector3(-12f,0.51f,-12f);
+        this.transform.position = new Vector3(-25f,0.51f,-30f);
     }
 
     // Update is called once per frame
@@ -36,8 +37,19 @@ public class Player : MonoBehaviour
         //{
         //    transform.Translate(Vector3.back * Time.deltaTime * _vitesse);
         //}
+        
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _vitesse *= 2;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift)) 
+        {
+            _vitesse /= 2;
+        }
 
         MouvementsJoueur();
+
+        
     }
 
     private void MouvementsJoueur()
