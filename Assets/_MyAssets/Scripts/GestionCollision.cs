@@ -7,24 +7,23 @@ public class GestionCollision : MonoBehaviour
     private Game _gestionJeu;
     private bool _toucher;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        _gestionJeu = FindObjectOfType<Game>();
+        _gestionJeu= FindObjectOfType<Game>();
         _toucher = false;
     }
 
-    private void OnCollisionEnter(Collision collision) 
+    private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
-        { 
+        if (collision.gameObject.tag == "Player")
+        {
             if(!_toucher)
             {
-                gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+                GetComponent<MeshRenderer>().material.color = Color.red;
                 _gestionJeu.AugmenterPointage();
-                _toucher = true;
-            
+                _toucher=true;
             }
-       }
-
-    }   
+        }
+    }
 }
